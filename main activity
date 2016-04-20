@@ -1,0 +1,21 @@
+private void myList(String user_uuid){
+
+RestAdapter restAdapter = new RestAdapter.Builder()
+    .setEndpoint(Constants.URL)  //call your base url
+    .build();
+
+
+MyApi mytask = restAdapter.create(MyApi.class); //this is how retrofit create your api
+mytask.getTaskDetail(user_uuid,new Callback<Task>>() {
+        @Override
+        public void success(ArrayList<Task> list, Response response) {
+            //process your response if successful load the list in your listview adapter
+
+        }
+
+        @Override
+        public void failure(RetrofitError retrofitError) {
+            retrofitError.printStackTrace(); //to see if you have errors
+        }
+    });
+}
