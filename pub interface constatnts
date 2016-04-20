@@ -1,0 +1,3 @@
+public interface Constants{
+   public String URL = "www.yoururl.com"
+}
