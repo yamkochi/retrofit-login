@@ -1,0 +1,21 @@
+private void myLogin(String username,String password){
+
+RestAdapter restAdapter = new RestAdapter.Builder()
+    .setEndpoint(Constants.URL)  //call your base url
+    .build();
+
+
+MyApi mylogin = restAdapter.create(MyApi.class); //this is how retrofit create your api
+mylogin.login(username,password,new Callback<String>() {
+        @Override
+        public void success(String s, Response response) {
+            //process your response if login successfull you can call Intent and launch your main activity
+
+        }
+
+        @Override
+        public void failure(RetrofitError retrofitError) {
+            retrofitError.printStackTrace(); //to see if you have errors
+        }
+    });
+}
