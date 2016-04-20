@@ -1,0 +1,21 @@
+private void myDetailed(String task_uuid){
+
+RestAdapter restAdapter = new RestAdapter.Builder()
+    .setEndpoint(Constants.URL)  //call your base url
+    .build();
+
+
+MyApi mytask = restAdapter.create(MyApi.class); //this is how retrofit create your api
+mytask.getTaskList(task_uuid,new Callback<Task>() {
+        @Override
+        public void success(Task task, Response response) {
+            //process your response if successful do what you want in your task
+
+        }
+
+        @Override
+        public void failure(RetrofitError retrofitError) {
+            retrofitError.printStackTrace(); //to see if you have errors
+        }
+    });
+}
